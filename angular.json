@@ -116,6 +116,46 @@
           }
         }
       }
+    },
+    "devx-nglib": {
+      "root": "projects/devx-nglib",
+      "sourceRoot": "projects/devx-nglib/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/devx-nglib/tsconfig.lib.json",
+            "project": "projects/devx-nglib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/devx-nglib/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/devx-nglib/src/test.ts",
+            "tsConfig": "projects/devx-nglib/tsconfig.spec.json",
+            "karmaConfig": "projects/devx-nglib/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/devx-nglib/tsconfig.lib.json",
+              "projects/devx-nglib/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "ngsix"
